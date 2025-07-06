@@ -1,0 +1,28 @@
+<span *ngIf="loggedInUser?.role === 'Admin'" >
+<button (click)="addNewEmployee()">+ Add User</button>
+<input [(ngModel)]="searchTerm" (input)="filterEmployees()" placeholder="Search users..." />
+</span>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Full Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>User Role</th>
+      <th *ngIf="loggedInUser?.role === 'Admin'" >Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.employeeId}}</td>
+      <td>{{employee.fullName}}</td>
+      <td>{{employee.phoneNumber}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.role}}</td>
+      <td *ngIf="loggedInUser?.role === 'Admin'" >
+        <button  (click)="deleteEmployee(employee._id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

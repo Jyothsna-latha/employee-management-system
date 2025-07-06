@@ -1,0 +1,22 @@
+<h2 class="form-title">Register New Employee</h2>
+<form class="register-form" (ngSubmit)="registerEmployee()">
+  <label for="empid" >{{empidlabel}}</label>
+  <input [(ngModel)]="employee.employeeId" name="employeeId" type="textbox" placeholder="Employee ID" readonly>
+  <label for="fullname" >{{fullnamelable}}</label>
+  <input [(ngModel)]="employee.fullName" name="fullName" placeholder="Full Name" required>
+  <label for="phonenumber" >{{phonenumberlable}}</label>
+  <input [(ngModel)]="employee.phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+  <label for="email" >{{emaillable}}</label>
+  <input [(ngModel)]="employee.email" name="email" type="email" placeholder="Email" required email >
+  <label for="password" >{{passwordlable}}</label>
+  <input [(ngModel)]="employee.password" name="password" type="password" placeholder="Password" required>
+  <label for="dropdown" >{{dropdownlabel}}</label>
+  <select id="dropdown" [(ngModel)]="employee.role"  name="dropdown" required>
+    <option *ngFor="let option of techOptions" [value]="option.value">{{ option.label }}</option>
+  </select>
+  
+
+  <button type="submit">Register</button>
+</form>
+
+<p  class="switch-login">Already have an account? <button (click)="goToLogin()">Login</button></p>
